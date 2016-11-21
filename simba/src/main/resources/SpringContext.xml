@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<!-- 配置文件 -->
+	<bean class="com.caozj.common.CustomizedPropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/configs.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<import resource="classpath:/SpringCommon.xml" />
+	<import resource="classpath:/SpringBeans.xml" />
+	<import resource="classpath:/SpringDatasource.xml" />
+	<!-- 使用jdbcTemplate的方式访问数据库 -->
+	<import resource="classpath:/SpringJdbc.xml" />
+	<!-- 使用mybatis的方式使用数据库 -->
+	<import resource="classpath:/SpringMybatis.xml" />
+
+	<import resource="classpath:/SpringAop.xml" />
+	<import resource="classpath:/SpringWebSocket.xml" />
+	<!-- <import resource="classpath:/SpringDubbo.xml" /> -->
+	<!-- <import resource="classpath:/SpringMQ.xml" /> -->
+	<import resource="classpath:/SpringCache.xml" />
+	<!-- 工作流Activiti -->
+	<import resource="classpath:/SpringActiviti.xml" />
+	<!-- Spring Batch -->
+	<import resource="classpath:/SpringBatch.xml" />
+	<!-- Liquibase 数据库持续集成 -->
+	<import resource="classpath:/SpringLiquibase.xml" />
+	
+</beans>

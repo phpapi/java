@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns="http://www.springframework.org/schema/batch"
+	xmlns:bean="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd  
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/batch 
+	http://www.springframework.org/schema/batch/spring-batch-3.0.xsd">
+
+
+	<!-- <job id="helloWorldJob"> <step id="step_hello" next="step_world"> <tasklet 
+		ref="testTasklet" /> </step> <step id="step_world"> <tasklet ref="testTasklet" 
+		/> </step> </job> -->
+<!--
+	<job id="testJob" restartable="true">
+		<listeners>
+			<listener ref="testJobListener" />
+		</listeners>
+		<step id="testStep" allow-start-if-complete="true">
+			<tasklet start-limit="5">
+				<listeners>
+					<listener ref="testStepListener" />
+					<listener ref="testRetryListener" />
+					<listener ref="testItemReaderListener" />
+					<listener ref="testItemWriterListener" />
+					<listener ref="testItemProcessListener" />
+					<listener ref="testSkipListener" />
+					<listener ref="testRepeatListener" />
+				</listeners>
+				<chunk reader="reader" writer="writer" commit-interval="2"
+					processor="process" retry-limit="10" skip-limit="5">
+					<retryable-exception-classes>
+						<include class="org.springframework.dao.TransientDataAccessException" />
+						<exclude
+							class="org.springframework.dao.PessimisticLockingFailureException" />
+					</retryable-exception-classes>
+					<skippable-exception-classes>
+						<include
+							class="org.springframework.batch.item.file.FlatFileParseException" />
+					</skippable-exception-classes>
+					<listeners>
+						<listener ref="testChunkListener" />
+					</listeners>
+					<retry-listeners>
+
+					</retry-listeners>
+				</chunk>
+			</tasklet>
+		</step>
+	</job>
+	-->
+</bean:beans>

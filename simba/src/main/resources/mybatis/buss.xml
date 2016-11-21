@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.caozj.mybatisDao.BussMapper">
+
+	<!-- 使用Mybatis自带的二级缓存 -->
+	<cache />
+
+	<!-- 使用Redis实现的二级缓存
+	<cache type="com.caozj.cache.MybatisRedisCache" />
+	 -->
+
+	<resultMap id="BussResultMap" type="com.caozj.model.Buss">
+		<id column="name" property="name" jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+		<result column="script" property="script" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Buss_Column_List">
+		name, description, script
+	</sql>
+	<select id="listAll" resultMap="BussResultMap">
+		select
+		<include refid="Buss_Column_List" />
+		from buss
+	</select>
+	<insert id="insert" parameterType="com.caozj.model.Buss">
+		insert into buss (
+		<include refid="Buss_Column_List" />
+		)
+		values (#{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{script,jdbcType=VARCHAR})
+	</insert>
+
+</mapper>
